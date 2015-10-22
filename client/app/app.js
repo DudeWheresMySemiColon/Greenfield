@@ -1,4 +1,4 @@
-angular.module('app', [])
+angular.module('foodly', ['foodly.services', 'foodly.auth', 'ngRoute'])
 
 .config(function($routeProvider, $httpProvider) {
 	$routeProvider
@@ -10,7 +10,10 @@ angular.module('app', [])
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
-    //additional routes here
+    .otherwise({
+      redirectTo: '/'
+    });
+//     //additional routes here
 	$httpProvider.interceptors.push(function($window) {
 		return {
 			request: function (config) {

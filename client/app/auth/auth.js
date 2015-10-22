@@ -1,4 +1,4 @@
-angular.module('app.auth', [])
+angular.module('foodly.auth', [])
 
 .controller('AuthController', function($scope, $window, $location, Auth) {
 
