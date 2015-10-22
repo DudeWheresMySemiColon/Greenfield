@@ -6,6 +6,8 @@ var morgan      = require('morgan'), // used for logging incoming request
   	app.use(bodyParser.urlencoded({extended: true}));
   	app.use(bodyParser.json());
   	app.use(express.static(__dirname + '/../../client'));
-
-
+  	app.use('api/users');
+  	app.use('api/users');
+  	app.use('app/meals');
+  	app.use('api/orders');
    }
