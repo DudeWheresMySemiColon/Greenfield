@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server/server.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,8 @@
     "express": "^4.13.3",
     "jwt-simple": "^0.3.1",
     "morgan": "^1.6.1",
-    "nodemon": "^1.7.3"
+    "nodemon": "^1.7.3",
+    "q": "^1.4.1"
   },
   "engines": {
     "node": "4.2.1",
