@@ -19,10 +19,11 @@
   "dependencies": {
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
+    "jwt-simple": "^0.3.1",
     "morgan": "^1.6.1",
     "nodemon": "^1.7.3"
   },
-    "engines": {
+  "engines": {
     "node": "4.2.1",
     "npm": "2.14.7"
   }
