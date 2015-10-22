@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon/issues"
   },
-  "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon"
+  "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon",
+  "dependencies": {
+    "express": "^4.13.3",
+    "nodemon": "^1.7.3"
+  }
 }
