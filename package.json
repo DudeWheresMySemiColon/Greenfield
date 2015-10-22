@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon",
   "dependencies": {
+    "angular-route": "^1.4.7",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "jwt-simple": "^0.3.1",
