@@ -19,8 +19,6 @@ var morgan      = require('morgan'), // used for logging incoming request
     app.use(helpers.errorHandler);
 
     require('../users/userRoutes.js')(userRouter);
-    
-   };
     //what is this?
   	app.use('api/users',userRouter);
   	// app.use('api/users');
