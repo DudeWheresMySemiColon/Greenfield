@@ -17,12 +17,13 @@
   },
   "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon",
   "dependencies": {
+    "angular-route": "^1.4.7",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "morgan": "^1.6.1",
     "nodemon": "^1.7.3"
   },
-    "engines": {
+  "engines": {
     "node": "4.2.1",
     "npm": "2.14.7"
   }
