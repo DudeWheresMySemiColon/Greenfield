@@ -71,4 +71,9 @@ UserSchema.pre('save', function (next) {
   });
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('User',UserSchema)
+
+// {User:
+//   mongoose.model('User', UserSchema),
+//   mealsSchema: mongoose.model('Meals',mealsSchema)
+// }
