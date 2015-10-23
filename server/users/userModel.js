@@ -25,7 +25,7 @@ var mongoose = require('mongoose'),
   },
   salt: String,
   meals: [mealsSchema],
-  orders: [Array]
+  orders: [mealsSchema]
   });
 
 
