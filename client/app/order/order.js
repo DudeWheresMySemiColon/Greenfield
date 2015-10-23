@@ -4,8 +4,8 @@ angular.module('foodly.order', [])
 
 	$scope.order = Order.getMealOrder();
 
-	$scope.submitOrder = function(meal) {
-		Order.submitOrder(meal)
+	$scope.submitOrder = function() {
+		Order.submitOrder($scope.order)
 			.then(function() {
 				alert('Your order will be arriving soon!');
 			});
