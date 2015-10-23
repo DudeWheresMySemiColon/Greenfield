@@ -85,7 +85,7 @@ module.exports = {
         });
     }
   },
-  orders: function(req,res,next){
+  meals: function(req,res,next){
     var findAll= Q.nbind(mealsSchema.find,mealsSchema);
     findAll({})
       .then(function(meals){
