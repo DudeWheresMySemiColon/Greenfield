@@ -101,5 +101,41 @@ module.exports = {
       .fail(function(error){
         next(error);
       })
+  },
+    addOrder: function (req, res, next){
+    var username = req.body.username,
+      title = req.body.orders[0].title,
+      price = req.body.orders[0].price,
+      update;
+    
+    var findOne = Q.nbind(User.findOne,User);
+    var findUser = Q.nbind(User.findOne, User);
+    
+    //check if the username exists
+    findUser({username: username})
+      .then(function(user){
+        if (!user){
+          next(new Error('User does not exist'));
+        } else {
+          //vor the verified username, finf the ._id, and push in order
+          update = Q.nbind(User.findByIdAndUpdate, User);
+
+        newOrder = {
+          title: title,
+          price: price,
+        };
+
+      update(user._id,
+            {$push: {"orders" : newOrder}})   
+        }
+      })
+      .then(function(user){
+        res.json(user)
+      })
+      .fail(function (error) {
+        next(error);
+      });
+    
+  
   }
 }

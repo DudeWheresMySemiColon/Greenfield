@@ -63,6 +63,14 @@ angular.module('foodly.services', [])
 		});
 	};
 
+	var addOrder = function(meal) {
+		return $http({
+			method: 'POST',
+			url: '/api/users/customer/post/orders',
+			data: meal
+		})
+	};
+
 	return {
 		getMeals: getMeals,
 		addMeal: addMeal
