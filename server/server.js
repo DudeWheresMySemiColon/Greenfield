@@ -3,11 +3,13 @@ var mongoose = require('mongoose');
 var uriUtil = require('mongodb-uri');
 
 var app = express();
+
+
+
 var port = process.env.PORT || 3000;
 
-app.listen(port);
 
-require('./config/middleware.js')(app, express);
+app.listen(port);
 
 console.log('Server now listening on port ' + port);
 
@@ -34,5 +36,8 @@ db.once('open',function(){
   console.log('connected to : ', mongooseUri);
 })
 
+require('./config/middleware.js')(app, express);
+
+module.exports = app;
 
 // var Schema = mongoose.Schema;
