@@ -47,9 +47,10 @@ angular.module('foodly.services', [])
 	var getMeals = function() {
 		return $http({
 			method: 'GET',
-			url: '/api/users/customers/get/meals'
+			url: '/api/users/customer/get/meals'
 		})
 		.then(function(resp) {
+			console.log('response',resp)
 			return resp.data;
 		});
 	};

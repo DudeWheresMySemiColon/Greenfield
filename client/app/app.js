@@ -10,6 +10,10 @@ angular.module('foodly', ['foodly.services', 'foodly.auth', 'foodly.meals', 'ngR
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
+    .when('/', {
+      templateUrl: 'app/meals/meals.html',
+      controller: 'MealController'
+    })
     .otherwise({
       redirectTo: '/'
     });
