@@ -5,13 +5,10 @@ var uriUtil = require('mongodb-uri');
 var app = express();
 
 
-
 var port = process.env.PORT || 3000;
 
 
-app.listen(port);
 
-console.log('Server now listening on port ' + port);
 
 
 //---------------------------------------------------------------------
@@ -37,6 +34,12 @@ db.once('open',function(){
 })
 
 require('./config/middleware.js')(app, express);
+
+
+
+
+app.listen(port);
+console.log('Server now listening on port ' + port);
 
 module.exports = app;
 

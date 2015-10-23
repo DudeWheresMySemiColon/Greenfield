@@ -4,15 +4,17 @@ var request = require('supertest')
 
 
 
-// Log out currently signed in user
-request(app)
-	.get('/api/users/customer/post/signin')
+//Test whether orders API is sending data
+setTimeout(function(){
+	request(app)
+	.get('/api/users/customer/get/meals')
 	.end(function(err, res) {
 		if(err){
 			console.log("I failed");
 		}
-	// Delete objects from db so they can be created later for the test
 	console.log(res.body);
 
-});
+	});
+},6000);
+
 

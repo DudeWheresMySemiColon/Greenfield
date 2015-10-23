@@ -86,13 +86,19 @@ module.exports = {
     }
   },
   meals: function(req,res,next){
-    var findAll= Q.nbind(mealsSchema.find,mealsSchema);
-    findAll({})
-      .then(function(meals){
-        res.json(meals);
+    var findAll= Q.nbind(User.find,User);
+    findAll({},{meals:true,_id:false})
+      .then(function(user_meals){
+        var alltheMeals = {meals:[]};
+        for(var i = 0;i<user_meals.length;i++){
+          for(var j = 0;j<user_meals[i].meals.length;j++){
+            alltheMeals.meals.push(user_meals[i].meals[j]);
+          }
+        }
+        res.json(alltheMeals);
       }) 
       .fail(function(error){
         next(error);
-    });
+      })
   }
-};
+}
