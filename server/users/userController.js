@@ -95,6 +95,7 @@ module.exports = {
             alltheMeals.meals.push(user_meals[i].meals[j]);
           }
         }
+        console.log(alltheMeals)
         res.json(alltheMeals);
       }) 
       .fail(function(error){
