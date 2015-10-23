@@ -14,7 +14,6 @@ var morgan      = require('morgan'), // used for logging incoming request
 
     app.use(helpers.errorLogger);
     app.use(helpers.errorHandler);
-
     require('../users/userRoutes.js')(userRouter);
     //what is this?
   	app.use('api/users',userRouter);
@@ -23,4 +22,4 @@ var morgan      = require('morgan'), // used for logging incoming request
   	// app.use('api/orders');
    };
 
-   // require('../users/usersRoutes.js')(userRouter);
+   //require('../users/usersRoutes.js')(userRouter);
