@@ -1,4 +1,4 @@
-angular.module('foodly', ['foodly.services', 'foodly.auth', 'ngRoute'])
+angular.module('foodly', ['foodly.services', 'foodly.auth', 'foodly.meals', 'ngRoute'])
 
 .config(function($routeProvider, $httpProvider) {
 	$routeProvider

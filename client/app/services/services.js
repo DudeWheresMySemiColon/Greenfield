@@ -41,3 +41,30 @@ angular.module('foodly.services', [])
 	};
 
 })
+
+.factory('Meals', function($http) {
+
+	var getMeals = function() {
+		return $http({
+			method: 'GET',
+			url: '/api/users/customers/get/meals'
+		})
+		.then(function(resp) {
+			return resp.data;
+		});
+	};
+
+	var addMeal = function(meal) {
+		return $http({
+			method: 'POST',
+			url: '/api/users/vendors/post/meal',
+			data: meal
+		});
+	};
+
+	return {
+		getMeals: getMeals,
+		addMeal: addMeal
+	};
+
+})
