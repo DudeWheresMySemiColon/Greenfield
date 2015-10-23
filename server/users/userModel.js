@@ -5,13 +5,13 @@ var mongoose = require('mongoose'),
 
 
  //define schema - mealsSchema - to be nested
-  var mealsSchema = new Schema({
+  var mealsSchema = new mongoose.Schema({
      title: String,
      price: Number
   });
 
   //define schema - userSchema, with nested meals
-  var userSchema = new Schema({
+  var UserSchema = new mongoose.Schema({
 
   	username: {
     type: String,
