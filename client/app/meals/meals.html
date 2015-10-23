@@ -1,1 +1,27 @@
-todo
+<div id='container'>
+   <div ng-controller="MealController">
+   </div>
+   <table class="table table-striped table-bordered">
+       <thead>
+           <tr>
+               <th>Title</th>
+               <th>Price</th>
+               <th>Order</th>
+           </tr>
+       </thead>
+       <tr ng-repeat="meal in data.meals">
+       <td>
+           <div>{{meal.title}}</div>
+           <div>{{meal.price}}</div>
+       </td>
+       </tr>
+       <td>
+           <td>
+               <button ng-click="order" type="submit" class="btn btn-success">Buy</button>
+           </td>
+       </td>
+       <td>
+       </td>
+   </table>
+   </nav>
+</div>
