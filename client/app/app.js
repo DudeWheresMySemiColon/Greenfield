@@ -11,6 +11,7 @@ angular.module('foodly', ['foodly.services', 'foodly.auth', 'foodly.meals', 'ngR
       controller: 'AuthController'
     })
     .when('/', {
+      authenticate: true,
       templateUrl: 'app/meals/meals.html',
       controller: 'MealController'
     })
