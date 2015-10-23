@@ -2,8 +2,15 @@ angular.module('foodly.meals', [])
 
 .controller('MealController', function($scope, $location, Meals) {
 
+// var test = [{
+//     title: 'pad thai',
+//     price: 10
+// }]
+
 	$scope.data = {}; //meals available for purchase
 	$scope.meal = {}; //meal to add
+
+
 
 	$scope.getMeals = function() {
 		Meals.getMeals()
