@@ -1,4 +1,4 @@
-angular.module('foodly', ['foodly.services', 'foodly.auth', 'foodly.meals', 'ngRoute'])
+angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foodly.meals', 'ngRoute'])
 
 .config(function($routeProvider, $httpProvider) {
 	$routeProvider
@@ -11,8 +11,14 @@ angular.module('foodly', ['foodly.services', 'foodly.auth', 'foodly.meals', 'ngR
       controller: 'AuthController'
     })
     .when('/', {
+      authenticate: true,
       templateUrl: 'app/meals/meals.html',
       controller: 'MealController'
+    })
+    .when('/order', {
+      authenticate: true,
+      templateUrl: 'app/order/order.html',
+      controller: 'OrderController'
     })
     .otherwise({
       redirectTo: '/'
