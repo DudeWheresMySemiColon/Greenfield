@@ -37,7 +37,7 @@ angular.module('foodly.meals', [])
 	//be retrieved from ng-model
 	$scope.orderMeal = function(meal) {
 		Order.cartOrder($scope.order);
-	  // console.log(meal.title);
+	  console.log(meal.title);
 		$location.path('/order');
 	};
 
