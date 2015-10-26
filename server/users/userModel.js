@@ -7,7 +7,8 @@ var mongoose = require('mongoose'),
  //define schema - mealsSchema - to be nested
   var mealsSchema = new mongoose.Schema({
      title: String,
-     price: Number
+     price: Number,
+     description: String
   });
 
   //define schema - userSchema, with nested meals
