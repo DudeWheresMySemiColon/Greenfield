@@ -26,6 +26,10 @@ angular.module('foodly.auth', [])
 			});
 	};	
 
+	$scope.signout = function() {
+		Auth.signout();
+	};
+
 })
 
 // get meals db.users.find()
