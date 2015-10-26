@@ -1,11 +1,10 @@
-<div class="container">
+<div class="container" ng-app="foodly">
   <div class="row">
      <form class="form-horizontal">
             <fieldset required>
                 <!-- Address form -->
          
                 <h2>Address</h2>
-         
 
                 <!-- address-line1 input-->
                 <div class="control-group">
@@ -13,7 +12,8 @@
                     <div class="controls">
                         <input id="address-line1" name="address-line1" type="text" placeholder="address line 1"
                         class="input-xlarge" required>
-                        <p class="help-block">Street address, P.O. box, company name, c/o</p>
+                        <p ng-controller="MealController" class="help-block">Street address, P.O. box, company name, c/o
+                        </p>
                     </div>
                 </div>
                 <!-- address-line2 input-->
