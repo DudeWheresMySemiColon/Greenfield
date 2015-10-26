@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon",
   "dependencies": {
-     "bcrypt-nodejs": "0.0.3",
     "angular-route": "^1.4.7",
+    "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "jwt-simple": "^0.3.1",
+    "mongodb": "^2.0.46",
+    "mongodb-uri": "^0.9.7",
+    "mongoose": "^4.2.2",
     "morgan": "^1.6.1",
     "nodemon": "^1.7.3",
     "q": "^1.4.1"
