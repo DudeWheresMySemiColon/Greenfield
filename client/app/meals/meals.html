@@ -127,9 +127,7 @@
 
                 <div class="row" ng-controller="MealController">
               <!--   <div data-ng-init="meals = [{ title: 'pad thai', price: 10 }, { title: 'unicorn meat', price: 20 }, { title: 'bubblegum pie', price: 30 }, { title: 'komodo dragon', price: 10 }, ]" > -->
-                       <div ng-repeat="meal in data.meals">
-
-
+                    <div ng-repeat="meal in data.meals">
                     <div class="col-sm-4 col-lg-4 col-md-4">
                         <div class="thumbnail">
                             <img src="http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg" alt="">
@@ -137,6 +135,8 @@
                                 <h4 class="pull-right">${{meal.price}}</h4>
                                 <h4><a href="#">{{meal.title}}</a>
                                 </h4>
+                                <button ng-click="order" type="submit" class="btn btn-success pull-right">Buy</button>
+
                                 <p>Brief description of this particular meal. Yum, tasty.</p>
                             </div>
                             <div class="ratings">
@@ -207,7 +207,6 @@
        </tr>
        <td>
            <td>
-               <button ng-click="order" type="submit" class="btn btn-success">Buy</button>
            </td>
        </td>
        <td>
