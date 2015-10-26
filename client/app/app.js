@@ -17,7 +17,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
     })
     .when('/order', {
       authenticate: true,
-      templateUrl: 'app/order/order.html',
+      templateUrl: 'app/order/address.html', // temp feature: when meal 'buy' button is clicked, routed to address.html
       controller: 'OrderController'
     })
     .otherwise({

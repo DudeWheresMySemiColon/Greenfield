@@ -31,10 +31,13 @@ angular.module('foodly.meals', [])
 	};
 
 
+
+
 	//ng-click will activate this. order will
 	//be retrieved from ng-model
-	$scope.orderMeal = function() {
+	$scope.orderMeal = function(meal) {
 		Order.cartOrder($scope.order);
+	  // console.log(meal.title);
 		$location.path('/order');
 	};
 
