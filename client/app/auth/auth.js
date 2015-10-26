@@ -8,6 +8,7 @@ angular.module('foodly.auth', [])
 		Auth.signup($scope.user)
 			.then(function(token) {
 				$window.localStorage.setItem('com.semicolon', token);
+				$window.localStorage.setItem('com.semicolon.name', $scope.user.username);
         		$location.path('/');
 			})
 			.catch(function(err) {
@@ -19,6 +20,7 @@ angular.module('foodly.auth', [])
 		Auth.signin($scope.user)
 			.then(function(token) {
 				$window.localStorage.setItem('com.semicolon', token);
+				$window.localStorage.setItem('com.semicolon.name', $scope.user.username);
         		$location.path('/');
 			})
 			.catch(function(err) {
@@ -28,6 +30,10 @@ angular.module('foodly.auth', [])
 
 	$scope.signout = function() {
 		Auth.signout();
+	};
+
+	$scope.getUsername = function() {
+		return Auth.getUsername();
 	};
 
 })

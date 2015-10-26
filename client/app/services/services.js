@@ -33,11 +33,16 @@ angular.module('foodly.services', [])
 		return !!$window.localStorage.getItem('com.semicolon');
 	};
 
+	var getUsername = function() {
+		return $window.localStorage.getItem('com.semicolon.name');
+	};
+
 	return {
 		signup: signup,
 		signin: signin,
 		signout: signout,
-		isAuth: isAuth
+		isAuth: isAuth,
+		getUsername: getUsername
 	};
 
 })

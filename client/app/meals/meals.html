@@ -59,7 +59,7 @@
                     </ul>
                 <ul class='nav navbar-nav' ng-controller='AuthController' style='float:right'>
                     <li>
-                        <a href='javascript:void(0)'>Welcome, {{ user.username }}</a>
+                        <a href='javascript:void(0)'>Welcome, {{ getUsername() }}</a>
                     </li>
                     <li>
                         <a href='javascript:void(0)' ng-click='signout()'>Logout</a>
