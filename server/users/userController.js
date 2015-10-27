@@ -115,6 +115,7 @@ module.exports = {
     //   })
   },
     addOrder: function (req, res, next){
+      //
     var username = req.body.username,
       title = req.body.orders[0].title,
       price = req.body.orders[0].price,
@@ -154,4 +155,38 @@ module.exports = {
     
   
   }
+
+  getVendorLatLong = function(req,res,next){
+    //expect request to be a meal object with _id field which is used as a matching param
+    //we will return an array with lat long of the user who owns that meal [Lat,Long]
+    /*   {
+            "title": "Pad Thai",
+            "price": 12.99,
+            "_id": {
+                "$oid": "56299289108f9b181d2bf218"
+            } */
+
+    //we will match the meal based on the id, so collect this from the request
+    var oId = req.body._id["$oid"]        
+    var aggr = Q.nbind(User.aggregate,User);
+
+    //use aggregation pipeline to get the parent docuement for that meal
+    aggr.([{$project{orders:1,location:1}},
+            {$unwind:"$orders"},
+            {$match:{"orders._id":ObjectId('"'+oId+'"')}
+          }])
+    .then(function(data){
+      //setup the response array Lat, Long
+      var resp = [data.location[0],data.location[1]];
+      res.send(resp)
+    })
+
+  .fail(function(err){
+    next(err)
+  });
+
+
+  }
+
+
 }
