@@ -7,7 +7,9 @@ var mongoose = require('mongoose'),
  //define schema - mealsSchema - to be nested
   var mealsSchema = new mongoose.Schema({
      title: String,
-     price: Number
+     price: Number,
+     description: String,
+     ingredients: {type: [String]} //an array of strings representing ingredients
   });
 
   //define schema - userSchema, with nested meals
@@ -15,6 +17,8 @@ var mongoose = require('mongoose'),
 
   	username: {
     type: String,
+    location: {type: [Number]}, // [Long, Lat]
+    type: String, //this will either be CUSTOMER or VENDOR
     required: true,
     unique: true
   }, 
@@ -28,7 +32,8 @@ var mongoose = require('mongoose'),
   orders: [mealsSchema]
   });
 
-
+//index the schema in 2dsphere format (for running a proximity search)
+UserSchema.index({location:'2dsphere'})
 
 UserSchema.methods.comparePasswords = function (candidatePassword) {
   var defer = Q.defer();

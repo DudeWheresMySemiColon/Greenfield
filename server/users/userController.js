@@ -86,26 +86,39 @@ module.exports = {
     }
   },
   meals: function(req,res,next){
-    var findAll= Q.nbind(User.find,User);
-    findAll({},{meals:true,_id:false})
-      .then(function(user_meals){
-        var alltheMeals = {meals:[]};
-        for(var i = 0;i<user_meals.length;i++){
-          for(var j = 0;j<user_meals[i].meals.length;j++){
-            alltheMeals.meals.push(user_meals[i].meals[j]);
-          }
-        }
-        //console.log(alltheMeals)
-        res.json(alltheMeals);
-      }) 
-      .fail(function(error){
-        next(error);
+
+    //getting all meals using aggregation pipeline
+    var aggr = Q.nbind(User.aggregate,User);
+
+    aggr({$project:{meals:1}},{$unwind:"$meals"})
+      .then(function(meals){
+        res.json(meals)
       })
+      .fail(function(err){
+        next(err)
+      });
+
+    // var findAll= Q.nbind(User.find,User);
+    // findAll({},{meals:true,_id:false})
+    //   .then(function(user_meals){
+    //     var alltheMeals = {meals:[]};
+    //     for(var i = 0;i<user_meals.length;i++){
+    //       for(var j = 0;j<user_meals[i].meals.length;j++){
+    //         alltheMeals.meals.push(user_meals[i].meals[j]);
+    //       }
+    //     }
+    //     //console.log(alltheMeals)
+    //     res.json(alltheMeals);
+    //   }) 
+    //   .fail(function(error){
+    //     next(error);
+    //   })
   },
     addOrder: function (req, res, next){
     var username = req.body.username,
       title = req.body.orders[0].title,
       price = req.body.orders[0].price,
+      description = req.body.orders[0].description,
       update;
     
     var findOne = Q.nbind(User.findOne,User);
@@ -123,7 +136,9 @@ module.exports = {
         newOrder = {
           title: title,
           price: price,
+          description: description
         };
+        console.log(newOrder)
 
       update(user._id,
             {$push: {"orders" : newOrder}})   
@@ -131,6 +146,7 @@ module.exports = {
       })
       .then(function(user){
         res.json(user)
+
       })
       .fail(function (error) {
         next(error);
