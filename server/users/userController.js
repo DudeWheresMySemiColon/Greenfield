@@ -139,8 +139,8 @@ module.exports = {
         var newMealitem = {
           title: title,
           price: price,
-          description: description
-          //ingredients: ingredients
+          description: description,
+          ingredients: ingredients
         };
       
         //push the meal object into the respective array
@@ -152,7 +152,6 @@ module.exports = {
                   update(user._id,
             {$push: {"orders" : newMealitem}}) 
               }
-  
         }
       })
       .then(function(user){
@@ -164,91 +163,9 @@ module.exports = {
         next(error);
       });
     
-  
   }
 
-  //   addOrder: function (req, res, next){
-  //     //
-  //   var username = req.body.username,
-  //     title = req.body.orders[0].title,
-  //     price = req.body.orders[0].price,
-  //     description = req.body.orders[0].description,
-  //     update;
-    
-  //   var findOne = Q.nbind(User.findOne,User);
-  //   var findUser = Q.nbind(User.findOne, User);
-    
-  //   //check if the username exists
-  //   findUser({username: username})
-  //     .then(function(user){
-  //       if (!user){
-  //         next(new Error('User does not exist'));
-  //       } else {
-  //         //vor the verified username, finf the ._id, and push in order
-  //         update = Q.nbind(User.findByIdAndUpdate, User);
-
-  //       newOrder = {
-  //         title: title,
-  //         price: price,
-  //         description: description
-  //       };
-  //       console.log(newOrder)
-
-  //     update(user._id,
-  //           {$push: {"orders" : newOrder}})   
-  //       }
-  //     })
-  //     .then(function(user){
-  //       res.json(user)
-
-  //     })
-  //     .fail(function (error) {
-  //       next(error);
-  //     });
-    
-  
-  // }, 
-  // addMeal: function (req, res, next){
-  //     //
-  //   var username = req.body.username,
-  //     title = req.body.meals[0].title,
-  //     price = req.body.meals[0].price,
-  //     description = req.body.meals[0].description,
-  //     update;
-    
-  //   var findOne = Q.nbind(User.findOne,User);
-  //   var findUser = Q.nbind(User.findOne, User);
-    
-  //   //check if the username exists
-  //   findUser({username: username})
-  //     .then(function(user){
-  //       if (!user){
-  //         next(new Error('User does not exist'));
-  //       } else {
-  //         //vor the verified username, finf the ._id, and push in order
-  //         update = Q.nbind(User.findByIdAndUpdate, User);
-
-  //       newOrder = {
-  //         title: title,
-  //         price: price,
-  //         description: description
-  //       };
-  //       console.log(newOrder)
-
-  //     update(user._id,
-  //           {$push: {"meals" : newOrder}})   
-  //       }
-  //     })
-  //     .then(function(user){
-  //       res.json(user)
-
-  //     })
-  //     .fail(function (error) {
-  //       next(error);
-  //     });
-    
-  
-  // }
+ 
 
   // getVendorLatLong = function(req,res,next){
   //   //expect request to be a meal object with _id field which is used as a matching param
