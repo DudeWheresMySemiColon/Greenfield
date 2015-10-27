@@ -98,54 +98,65 @@ module.exports = {
         next(err)
       });
 
-    // var findAll= Q.nbind(User.find,User);
-    // findAll({},{meals:true,_id:false})
-    //   .then(function(user_meals){
-    //     var alltheMeals = {meals:[]};
-    //     for(var i = 0;i<user_meals.length;i++){
-    //       for(var j = 0;j<user_meals[i].meals.length;j++){
-    //         alltheMeals.meals.push(user_meals[i].meals[j]);
-    //       }
-    //     }
-    //     //console.log(alltheMeals)
-    //     res.json(alltheMeals);
-    //   }) 
-    //   .fail(function(error){
-    //     next(error);
-    //   })
+ 
   },
-    addOrder: function (req, res, next){
-      //
+
+  addMeal: function (req,res,next){
+
     var username = req.body.username,
-      title = req.body.orders[0].title,
+    update;
+
+     
+     if (req.body.orders.length>0) { 
+      //then we have an order (customer)
+      var title = req.body.orders[0].title,
       price = req.body.orders[0].price,
-      description = req.body.orders[0].description,
-      update;
+      description = req.body.orders[0].description, 
+      ingredients = req.body.orders[0].ingredients,
+      field = "orders"
+    } else {
+      //then we have a meal (vendor)
+      var title = req.body.meals[0].title,
+      price = req.body.meals[0].price,
+      description = req.body.meals[0].description,
+      ingredients = req.body.meals[0].ingredients,
+      field = "meals"
+    }
     
     var findOne = Q.nbind(User.findOne,User);
     var findUser = Q.nbind(User.findOne, User);
     
-    //check if the username exists
+    //check if the username who submitted the request exists
     findUser({username: username})
       .then(function(user){
         if (!user){
           next(new Error('User does not exist'));
         } else {
-          //vor the verified username, finf the ._id, and push in order
+          
+          //for the verified username, finf the ._id, and push in order or meal
           update = Q.nbind(User.findByIdAndUpdate, User);
 
-        newOrder = {
+        var newMealitem = {
           title: title,
           price: price,
           description: description
+          //ingredients: ingredients
         };
-        console.log(newOrder)
-
-      update(user._id,
-            {$push: {"orders" : newOrder}})   
+      
+        //push the meal object into the respective array
+        console.log('later user',field,newMealitem)
+        if (field==="meals"){
+                update(user._id,
+            {$push: {"meals" : newMealitem}}) 
+              } else {
+                  update(user._id,
+            {$push: {"orders" : newMealitem}}) 
+              }
+  
         }
       })
       .then(function(user){
+        console.log('has it been updated',user)
         res.json(user)
 
       })
@@ -156,37 +167,120 @@ module.exports = {
   
   }
 
-  getVendorLatLong = function(req,res,next){
-    //expect request to be a meal object with _id field which is used as a matching param
-    //we will return an array with lat long of the user who owns that meal [Lat,Long]
-    /*   {
-            "title": "Pad Thai",
-            "price": 12.99,
-            "_id": {
-                "$oid": "56299289108f9b181d2bf218"
-            } */
+  //   addOrder: function (req, res, next){
+  //     //
+  //   var username = req.body.username,
+  //     title = req.body.orders[0].title,
+  //     price = req.body.orders[0].price,
+  //     description = req.body.orders[0].description,
+  //     update;
+    
+  //   var findOne = Q.nbind(User.findOne,User);
+  //   var findUser = Q.nbind(User.findOne, User);
+    
+  //   //check if the username exists
+  //   findUser({username: username})
+  //     .then(function(user){
+  //       if (!user){
+  //         next(new Error('User does not exist'));
+  //       } else {
+  //         //vor the verified username, finf the ._id, and push in order
+  //         update = Q.nbind(User.findByIdAndUpdate, User);
 
-    //we will match the meal based on the id, so collect this from the request
-    var oId = req.body._id["$oid"]        
-    var aggr = Q.nbind(User.aggregate,User);
+  //       newOrder = {
+  //         title: title,
+  //         price: price,
+  //         description: description
+  //       };
+  //       console.log(newOrder)
 
-    //use aggregation pipeline to get the parent docuement for that meal
-    aggr.([{$project{orders:1,location:1}},
-            {$unwind:"$orders"},
-            {$match:{"orders._id":ObjectId('"'+oId+'"')}
-          }])
-    .then(function(data){
-      //setup the response array Lat, Long
-      var resp = [data.location[0],data.location[1]];
-      res.send(resp)
-    })
+  //     update(user._id,
+  //           {$push: {"orders" : newOrder}})   
+  //       }
+  //     })
+  //     .then(function(user){
+  //       res.json(user)
 
-  .fail(function(err){
-    next(err)
-  });
+  //     })
+  //     .fail(function (error) {
+  //       next(error);
+  //     });
+    
+  
+  // }, 
+  // addMeal: function (req, res, next){
+  //     //
+  //   var username = req.body.username,
+  //     title = req.body.meals[0].title,
+  //     price = req.body.meals[0].price,
+  //     description = req.body.meals[0].description,
+  //     update;
+    
+  //   var findOne = Q.nbind(User.findOne,User);
+  //   var findUser = Q.nbind(User.findOne, User);
+    
+  //   //check if the username exists
+  //   findUser({username: username})
+  //     .then(function(user){
+  //       if (!user){
+  //         next(new Error('User does not exist'));
+  //       } else {
+  //         //vor the verified username, finf the ._id, and push in order
+  //         update = Q.nbind(User.findByIdAndUpdate, User);
+
+  //       newOrder = {
+  //         title: title,
+  //         price: price,
+  //         description: description
+  //       };
+  //       console.log(newOrder)
+
+  //     update(user._id,
+  //           {$push: {"meals" : newOrder}})   
+  //       }
+  //     })
+  //     .then(function(user){
+  //       res.json(user)
+
+  //     })
+  //     .fail(function (error) {
+  //       next(error);
+  //     });
+    
+  
+  // }
+
+  // getVendorLatLong = function(req,res,next){
+  //   //expect request to be a meal object with _id field which is used as a matching param
+  //   //we will return an array with lat long of the user who owns that meal [Lat,Long]
+  //   /*   {
+  //           "title": "Pad Thai",
+  //           "price": 12.99,
+  //           "_id": {
+  //               "$oid": "56299289108f9b181d2bf218"
+  //           } */
+
+  //   //we will match the meal based on the id, so collect this from the request
+  //   var oId = req.body._id["$oid"]        
+  //   var aggr = Q.nbind(User.aggregate,User);
+
+  //   //use aggregation pipeline to get the parent docuement for that meal
+  //   aggr.([{$project{orders:1,location:1}},
+  //           {$unwind:"$orders"},
+  //           {$match:{"orders._id":ObjectId('"'+oId+'"')}
+  //         }])
+  //   .then(function(data){
+  //     //setup the response array Lat, Long
+  //     var resp = [data.location[0],data.location[1]];
+  //     res.send(resp)
+  //   })
+
+  // .fail(function(err){
+  //   next(err)
+  // });
 
 
-  }
+  // }
 
 
 }
