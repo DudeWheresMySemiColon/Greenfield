@@ -84,17 +84,18 @@ angular.module('foodly.services', [])
 })
 
 .factory('Order', function($http) {
-
-	var mealToOrder = {};
+	//This data is for experimental purposes only. Needs to be put in via meals html to work
+	var mealToOrder = {orders: [{username: "Michael", title: "Taco", price: 7,description: "Try my taco tacos"}]};
 
 	var cartOrder = function(meal) {
 		mealToOrder = meal;
 	};
 
-	var submitOrder = function() {
+	var submitOrder = function(mealToOrder) {
+		console.log(mealToOrder)
 		return $http({
 			method: 'POST',
-			url: '/api/users/customer/post/order',
+			url: '/api/users/customer/post/orders',
 			data: mealToOrder
 		});
 	};
