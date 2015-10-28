@@ -115,6 +115,7 @@ module.exports = {
       
      } else {
       //then we have a meal (vendor)
+      var username = req.body.username;
       var title = req.body.meals[0].title,
       price = req.body.meals[0].price,
       description = req.body.meals[0].description,
