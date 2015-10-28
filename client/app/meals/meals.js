@@ -3,7 +3,7 @@ angular.module('foodly.meals', [])
 .controller('MealController', function($scope, $location, Meals, Order, Auth) {
 
 
-	$scope.data = {}; //meals available for purchase
+	$scope.data = []; //meals available for purchase
 	$scope.meal = {}; //meal to add
 	$scope.order = {orders: []};
 

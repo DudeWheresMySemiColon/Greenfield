@@ -1,5 +1,4 @@
 
-
     <!-- Page Content -->
     <div class="container col-centered">
         <div class="container">
@@ -40,7 +39,7 @@
                     <!-- begin meal thumbnails -->
                     <div id='container'>
                         <div class="row" ng-controller="MealController">
-                            <div ng-repeat="meal in data">
+                            <div ng-repeat="meal in data | filter:search ">
                                 <div class="col-sm-4 col-lg-4 col-md-4">
                                     <div class="thumbnail">
                                         <img src="http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg" alt="">
