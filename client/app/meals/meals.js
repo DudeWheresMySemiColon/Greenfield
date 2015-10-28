@@ -1,6 +1,6 @@
 angular.module('foodly.meals', [])
 
-.controller('MealController', function($scope, $location, Meals, Order) {
+.controller('MealController', function($scope, $location, Meals, Order, Auth) {
 
 
 	$scope.data = {}; //meals available for purchase
@@ -21,8 +21,9 @@ angular.module('foodly.meals', [])
 	$scope.getMeals(); // must be called for initial page load
 
 	$scope.addMeal = function() {
-		Meals.addMeal($scope.meal)
+		Meals.addMeal({meals: [$scope.meal], username: Auth.getUsername()})
 			.then(function() {
+				console.log($scope.meal.description, 'sent to server.');
 				$location.path('/'); //added successfully
 			})
 			.catch(function(err) {
