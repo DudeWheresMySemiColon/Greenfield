@@ -110,10 +110,10 @@ angular.module('foodly.services', [])
 	};
 
 })
+
 .factory('Counter',function(){
       var count = {
         'number': 0
       };
      return count;
 })
-

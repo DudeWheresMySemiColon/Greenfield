@@ -42,7 +42,7 @@
                             <div ng-repeat="meal in data | filter:search ">
                                 <div class="col-sm-4 col-lg-4 col-md-4">
                                     <div class="thumbnail">
-                                        <img src="http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg" alt="">
+                                        <img ng-src="{{meal.meals.url}}" alt="image">
                                         <div class="caption">
                                             <h4 class="pull-right">{{meal.meals.price | currency}}</h4>
                                             <h4><a href="#">{{meal.meals.title}}</a></h4>

@@ -1,6 +1,7 @@
 var express = require("express");
 var mongoose = require('mongoose');
 var uriUtil = require('mongodb-uri');
+var aws = require('aws-sdk');
 
 var app = express();
 
@@ -35,6 +36,32 @@ db.once('open',function(){
 
 require('./config/middleware.js')(app, express);
 
+
+
+app.get('/sign_s3', function(req, res){
+    aws.config.update({accessKeyId: 'AKIAITE3JGULA4YD3NYA', secretAccessKey: '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'});
+    var s3 = new aws.S3();
+    var s3_params = {
+        Bucket: 'mks-greenfield',
+        Key: req.query.file_name,
+        Expires: 60,
+        ContentType: req.query.file_type,
+        ACL: 'public-read'
+    };
+    s3.getSignedUrl('putObject', s3_params, function(err, data){
+        if(err){
+            console.log(err);
+        }
+        else{
+            var return_data = {
+                signed_request: data,
+                url: 'https://mks-greenfield.s3.amazonaws.com/'+req.query.file_name
+            };
+            res.write(JSON.stringify(return_data));
+            res.end();
+        }
+    });
+});
 
 
 
