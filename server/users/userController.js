@@ -102,19 +102,18 @@ module.exports = {
   },
 
   addMeal: function (req,res,next){
+    var update;
 
-    var username = req.body.username,
-    update;
-
-     
-     if (req.body.orders.length>0) { 
+    if (req.body.hasOwnProperty('orders')) { 
       //then we have an order (customer)
-      var title = req.body.orders[0].title,
+      var username = req.body.orders[0].username,
+      title = req.body.orders[0].title,
       price = req.body.orders[0].price,
       description = req.body.orders[0].description, 
       ingredients = req.body.orders[0].ingredients,
       field = "orders"
-    } else {
+      
+     } else {
       //then we have a meal (vendor)
       var title = req.body.meals[0].title,
       price = req.body.meals[0].price,
@@ -164,6 +163,8 @@ module.exports = {
       });
     
   }
+
+
 
  
 
