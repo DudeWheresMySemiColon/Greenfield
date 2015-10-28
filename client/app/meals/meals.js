@@ -2,10 +2,6 @@ angular.module('foodly.meals', [])
 
 .controller('MealController', function($scope, $location, Meals, Order) {
 
-// var test = [{
-//     title: 'pad thai',
-//     price: 10
-// }]
 
 	$scope.data = {}; //meals available for purchase
 	$scope.meal = {}; //meal to add
@@ -35,10 +31,13 @@ angular.module('foodly.meals', [])
 	};
 
 
+
+
 	//ng-click will activate this. order will
 	//be retrieved from ng-model
-	$scope.orderMeal = function() {
+	$scope.orderMeal = function(meal) {
 		Order.cartOrder($scope.order);
+	  console.log(meal.title);
 		$location.path('/order');
 	};
 

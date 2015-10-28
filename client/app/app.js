@@ -17,12 +17,18 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
     })
     .when('/order', {
       authenticate: true,
-      templateUrl: 'app/order/order.html',
+      templateUrl: 'app/order/order.html', 
       controller: 'OrderController'
+    })
+      .when('/addmeal', {
+      authenticate: true,
+      templateUrl: 'app/addMeal/addMeal.html',
+      controller: 'MealController'
     })
     .otherwise({
       redirectTo: '/'
     });
+
 //     //additional routes here
 	$httpProvider.interceptors.push(function($window) {
 		return {

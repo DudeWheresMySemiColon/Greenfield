@@ -55,7 +55,7 @@ angular.module('foodly.services', [])
 			url: '/api/users/customer/get/meals'
 		})
 		.then(function(resp) {
-			console.log('response',resp)
+			console.log('response',resp.data)
 			return resp.data;
 		});
 	};
