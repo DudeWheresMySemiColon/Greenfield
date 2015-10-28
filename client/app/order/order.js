@@ -6,7 +6,7 @@ angular.module('foodly.order', [])
 	console.log($scope.orders)
 
 	$scope.submitOrder = function() {
-		Order.submitOrder($scope.order)
+		Order.submitOrder($scope.orders)
 		.then(function(){
 			$('#myModal').modal('toggle')
 			$location.path("/");
