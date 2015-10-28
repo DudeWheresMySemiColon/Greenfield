@@ -2,7 +2,8 @@ angular.module('foodly.order', [])
 
 .controller('OrderController', function($scope, $location,Order) {
 
-	$scope.order = Order.getMealOrder();
+	$scope.orders = Order.getMealOrder();
+	console.log($scope.orders)
 
 	$scope.submitOrder = function() {
 		Order.submitOrder($scope.order)

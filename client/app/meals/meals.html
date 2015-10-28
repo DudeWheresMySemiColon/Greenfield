@@ -44,10 +44,10 @@
                                     <div class="thumbnail">
                                         <img src="http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg" alt="">
                                         <div class="caption">
-                                            <h4 class="pull-right">${{meal.meals.price}}</h4>
+                                            <h4 class="pull-right">{{meal.meals.price | currency}}</h4>
                                             <h4><a href="#">{{meal.meals.title}}</a></h4>
-                                            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Buy</button>
-                                            <p>Brief description of this particular meal. Yum, tasty.</p>
+                                            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Add to cart</button>
+                                            <p>{{meals.meals.descriptin}}</p>
                                         </div>
                                         <div class="ratings">
                                             <p class="pull-right">15 reviews</p>

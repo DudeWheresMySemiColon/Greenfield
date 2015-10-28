@@ -318,12 +318,12 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr ng-repeat="order in orders.orders">
                         <td><img src="http://lorempixel.com/40/40/food?afK5dD" class="img-thumbnail" alt="Item description" title="Some shop item">
                         </td>
-                        <td>{{order.orders[0].title}}</td>
-                        <td>{{order.orders[0].price | currency}}</td>
-                        <td>{{order.orders[0].description}}</td>
+                        <td>{{order.title}}</td>
+                        <td>{{order.price | currency}}</td>
+                        <td>{{order.description}}</td>
                       </tr>
                     </tbody>
                   </table>

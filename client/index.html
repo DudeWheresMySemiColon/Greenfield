@@ -39,7 +39,12 @@
               </form>            
             <div id="navbar" class="collapse navbar-collapse" >
                 <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
-                   
+                        <li class='nav navbar-nav' ng-controller='MealController'>
+                            <a href='#/order'>Checkout 
+                           <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}   
+                            </a>
+
+                        </li>
                         <li class='nav navbar-nav' >
                             <a href='javascript:void(0)'>Welcome, {{ getUsername() }}</a>
                         </li>
