@@ -5,7 +5,7 @@ angular.module('foodly.meals', [])
 
 	$scope.data = {}; //meals available for purchase
 	$scope.meal = {}; //meal to add
-	$scope.order = {};
+	$scope.order = {orders: []};
 
 
 
@@ -37,8 +37,9 @@ angular.module('foodly.meals', [])
 	//ng-click will activate this. order will
 	//be retrieved from ng-model
 	$scope.orderMeal = function(meal) {
+		meal.meals.username = Auth.getUsername();
+		$scope.order.orders.push(meal.meals)
 		Order.cartOrder($scope.order);
-	  console.log(meal.title);
 		$location.path('/order');
 	};
 
