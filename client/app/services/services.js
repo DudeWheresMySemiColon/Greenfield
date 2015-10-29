@@ -91,6 +91,7 @@ angular.module('foodly.services', [])
 	};
 
 	var submitOrder = function(mealToOrder) {
+		console.log("I'm a meal to order", mealToOrder)
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',

@@ -106,15 +106,25 @@ module.exports = {
 
     if (req.body.hasOwnProperty('orders')) { 
       //then we have an order (customer)
-      var username = req.body.orders[0].username,
-      title = req.body.orders[0].title,
-      price = req.body.orders[0].price,
-      description = req.body.orders[0].description, 
-      ingredients = req.body.orders[0].ingredients,
-      field = "orders"
-      
+
+      var meal = [];
+      for(var i =0;i<req.body.orders.length;i++){
+        var username = req.body.orders[i].username,
+        title = req.body.orders[i].title,
+        price = req.body.orders[0].price,
+        description = req.body.orders[i].description, 
+        ingredients = req.body.orders[i].ingredients
+         meal.push({
+          title: title,
+          price: price,
+          description: description,
+          ingredients: ingredients
+        });
+      }
+      field = "orders" 
      } else {
       //then we have a meal (vendor)
+      console.log("I'm a vendor meal")
       var username = req.body.username;
       var title = req.body.meals[0].title,
       price = req.body.meals[0].price,
@@ -150,7 +160,7 @@ module.exports = {
             {$push: {"meals" : newMealitem}}) 
               } else {
                   update(user._id,
-            {$push: {"orders" : newMealitem}}) 
+            {orders : meal}) 
               }
         }
       })
