@@ -40,7 +40,7 @@
             <div id="navbar" class="collapse navbar-collapse" >
                 <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
                         <li class='nav navbar-nav' ng-controller='MealController'>
-                            <a href='#/order'>Checkout 
+                            <a ng-click="checkOut()">Checkout 
                            <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}   
                             </a>
 

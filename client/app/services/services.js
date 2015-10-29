@@ -84,7 +84,7 @@ angular.module('foodly.services', [])
 
 .factory('Order', function($http) {
 	//This data is for experimental purposes only. Needs to be put in via meals html to work
-	var mealToOrder = {};
+	var mealToOrder = {orders: []};
 
 	var cartOrder = function(meal) {
 		mealToOrder = meal;

@@ -30,6 +30,13 @@ angular.module('foodly.meals', [])
 				console.log(err);
 			});
 	};
+	$scope.checkOut = function(){
+		if(Counter.number === 0){
+			alert("Please order something before checking out")
+		}else{
+			$location.path('/order');
+		}
+	};
 
 
 
