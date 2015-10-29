@@ -325,6 +325,11 @@
                         <td>{{order.price | currency}}</td>
                         <td>{{order.description}}</td>
                       </tr>
+                      <tfoot>
+                        <td></td>
+                        <td><strong>Total:</strong></td>
+                        <td><strong>{{getTotal() | currency}}</strong></td>
+                        <td></td>
                     </tbody>
                   </table>
                 </div>

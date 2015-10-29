@@ -18,5 +18,14 @@ angular.module('foodly.order', [])
 			$location.path("/");
 			});
 	};
+	$scope.getTotal = function(){
+    	var total = 0;
+	    for(var i = 0; i < $scope.orders.orders.length; i++){
+	    	if($scope.orders.orders[i].price){
+	        total += $scope.orders.orders[i].price
+	    	}
+	    }
+    return total;
+}	
 	$scope.checkOrder();
 })
