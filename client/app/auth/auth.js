@@ -24,7 +24,7 @@ angular.module('foodly.auth', [])
 			.then(function(token) {
 				$window.localStorage.setItem('com.semicolon', token);
 				$window.localStorage.setItem('com.semicolon.name', $scope.user.username);
-        		$location.path('/');
+        		$location.path('/order');
 			})
 			.catch(function(err) {
 				$scope.failedLogin = true;
