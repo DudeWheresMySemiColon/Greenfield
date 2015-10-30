@@ -1,6 +1,6 @@
 <div class="container" ng-app="foodly">
   <div class="row">
-     <form class="form-horizontal" ng-submit='this.submitOrder()'>
+     <form class="form-horizontal" ng-submit='submitOrder()'>
             <fieldset required>
                 <!-- Address form -->
          
@@ -318,13 +318,18 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
+                      <tr ng-repeat="order in orders.orders">
                         <td><img src="http://lorempixel.com/40/40/food?afK5dD" class="img-thumbnail" alt="Item description" title="Some shop item">
                         </td>
-                        <td>{{order.orders[0].title}}</td>
-                        <td>{{order.orders[0].price | currency}}</td>
-                        <td>{{order.orders[0].description}}</td>
+                        <td>{{order.title}}</td>
+                        <td>{{order.price | currency}}</td>
+                        <td>{{order.description}}</td>
                       </tr>
+                      <tfoot>
+                        <td></td>
+                        <td><strong>Total:</strong></td>
+                        <td><strong>{{getTotal() | currency}}</strong></td>
+                        <td></td>
                     </tbody>
                   </table>
                 </div>

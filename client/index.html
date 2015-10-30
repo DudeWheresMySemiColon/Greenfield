@@ -28,13 +28,23 @@
                 </button>
                 <a class="navbar-brand" href="#"><img src='http://jadedalloul.com/wp-content/uploads/2014/06/Thumbnail_Foodly.jpg' height=80>
                 </a>
-                <a class="navbar-brand" href="#/meals">Today's Meals</a>                     
+                <a class="navbar-brand" href="#/meals">Today's Meals</a>           
                         <a class ='navbar-brand' href="#/addmeal">Add Meal</a>
 
             </div>
+              <form class="navbar-form navbar-left" role="search">
+                <div class="form-group" ng-show="SearchBar" >
+                   <input type="text" class="form-control search" placeholder="Search"  ng-model="search">    
+                </div>
+              </form>            
             <div id="navbar" class="collapse navbar-collapse" >
                 <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
-                   
+                        <li class='nav navbar-nav' ng-controller='MealController'>
+                            <a ng-click="checkOut()">Checkout 
+                           <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}   
+                            </a>
+
+                        </li>
                         <li class='nav navbar-nav' >
                             <a href='javascript:void(0)'>Welcome, {{ getUsername() }}</a>
                         </li>
@@ -42,9 +52,6 @@
                         <a href='javascript:void(0)' ng-click='signout()'>Logout</a>
 
                         </li>
-
-                    
-      
                       </ul>
             </div>
        

@@ -1,5 +1,4 @@
 
-
     <!-- Page Content -->
     <div class="container col-centered">
         <div class="container">
@@ -40,15 +39,15 @@
                     <!-- begin meal thumbnails -->
                     <div id='container'>
                         <div class="row" ng-controller="MealController">
-                            <div ng-repeat="meal in data">
+                            <div ng-repeat="meal in data | filter:search ">
                                 <div class="col-sm-4 col-lg-4 col-md-4">
                                     <div class="thumbnail">
                                         <img src="http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg" alt="">
                                         <div class="caption">
-                                            <h4 class="pull-right">${{meal.meals.price}}</h4>
+                                            <h4 class="pull-right">{{meal.meals.price | currency}}</h4>
                                             <h4><a href="#">{{meal.meals.title}}</a></h4>
-                                            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Buy</button>
-                                            <p>Brief description of this particular meal. Yum, tasty.</p>
+                                            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Add to cart</button>
+                                            <p>{{meal.meals.description}}</p>
                                         </div>
                                         <div class="ratings">
                                             <p class="pull-right">15 reviews</p>

@@ -1,12 +1,12 @@
 angular.module('foodly.meals', [])
 
-.controller('MealController', function($scope, $location, Meals, Order, Auth) {
+.controller('MealController', function($scope, $location, Meals, Order, Auth, Counter) {
 
 
-	$scope.data = {}; //meals available for purchase
+	$scope.data = []; //meals available for purchase
 	$scope.meal = {}; //meal to add
 	$scope.order = {orders: []};
-
+	$scope.count = Counter;
 
 
 	$scope.getMeals = function() {
@@ -30,7 +30,13 @@ angular.module('foodly.meals', [])
 				console.log(err);
 			});
 	};
-
+	$scope.checkOut = function(){
+		if(Counter.number === 0){
+			alert("Please order something before checking out")
+		}else{
+			$location.path('/order');
+		}
+	};
 
 
 
@@ -40,7 +46,8 @@ angular.module('foodly.meals', [])
 		meal.meals.username = Auth.getUsername();
 		$scope.order.orders.push(meal.meals)
 		Order.cartOrder($scope.order);
-		$location.path('/order');
+		Counter.number = Counter.number +1;
+
 	};
 
 })

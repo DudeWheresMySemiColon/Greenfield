@@ -55,7 +55,6 @@ angular.module('foodly.services', [])
 			url: '/api/users/customer/get/meals'
 		})
 		.then(function(resp) {
-			console.log('response',resp.data)
 			return resp.data;
 		});
 	};
@@ -85,13 +84,14 @@ angular.module('foodly.services', [])
 
 .factory('Order', function($http) {
 	//This data is for experimental purposes only. Needs to be put in via meals html to work
-	var mealToOrder = {};
+	var mealToOrder = {orders: []};
 
 	var cartOrder = function(meal) {
 		mealToOrder = meal;
 	};
 
 	var submitOrder = function(mealToOrder) {
+		console.log("I'm a meal to order", mealToOrder)
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',
@@ -110,3 +110,10 @@ angular.module('foodly.services', [])
 	};
 
 })
+.factory('Counter',function(){
+      var count = {
+        'number': 0
+      };
+     return count;
+})
+
