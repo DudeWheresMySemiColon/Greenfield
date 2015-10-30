@@ -12,3 +12,4 @@ angular.module('foodly.order', [])
 			});
 	};
 })
+
