@@ -11,7 +11,6 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
       controller: 'AuthController'
     })
     .when('/', {
-      authenticate: true,
       templateUrl: 'app/meals/meals.html',
       controller: 'MealController'
     })

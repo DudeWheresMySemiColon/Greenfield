@@ -3,7 +3,8 @@ angular.module('foodly.auth', [])
 .controller('AuthController', function($scope, $window, $location, Auth) {
 
 	$scope.user = {}; //this is attached to ng-model in the view
-
+	$scope.failedAttempt = false;
+	$scope.failedLogin = false;
 	$scope.signup = function() {
 		Auth.signup($scope.user)
 			.then(function(token) {
@@ -12,7 +13,9 @@ angular.module('foodly.auth', [])
         		$location.path('/');
 			})
 			.catch(function(err) {
+				$scope.failedAttempt = true;
 				console.log(err);
+
 			});
 	};
 
@@ -24,7 +27,9 @@ angular.module('foodly.auth', [])
         		$location.path('/');
 			})
 			.catch(function(err) {
+				$scope.failedLogin = true;
 				console.log(err);
+
 			});
 	};	
 
