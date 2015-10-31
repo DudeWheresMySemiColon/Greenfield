@@ -32,6 +32,10 @@ angular.module('foodly.services', [])
 	};
 
 	var isAuth = function() {
+		if(!window.localStorage.getItem('com.semicolon')){
+			return false;
+		}
+
 		if(new Date() - Date.parse($window.localStorage.getItem('com.semicolon.date'))>1800000){
 			$window.localStorage.removeItem('com.semicolon');
 			$window.localStorage.removeItem('com.semicolon.name');
@@ -39,7 +43,7 @@ angular.module('foodly.services', [])
 		}else{
 			$window.localStorage.setItem('com.semicolon.date', new Date());			
 		}
-		return !!$window.localStorage.getItem('com.semicolon');
+		return true;
 	};
 
 	var getUsername = function() {

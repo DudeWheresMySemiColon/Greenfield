@@ -45,7 +45,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
 .run(function ($rootScope, $location, Auth) {
   $rootScope.SearchBar = true;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if(next.$$route.templateUrl === "app/meals/meals.html"){
+    if(next.$$route && next.$$route.templateUrl === "app/meals/meals.html"){
       $rootScope.SearchBar = true;
     }else{
        $rootScope.SearchBar = false;     
