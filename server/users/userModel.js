@@ -9,7 +9,8 @@ var mongoose = require('mongoose'),
      title: String,
      price: Number,
      description: String,
-     ingredients: {type: [String]} //an array of strings representing ingredients
+     ingredients: {type: [String]},
+     url: String
   });
 
   //define schema - userSchema, with nested meals

@@ -103,10 +103,8 @@ module.exports = {
 
   addMeal: function (req,res,next){
     var update;
-
     if (req.body.hasOwnProperty('orders')) { 
       //then we have an order (customer)
-
       var meal = [];
       for(var i =0;i<req.body.orders.length;i++){
         var username = req.body.orders[i].username,
@@ -123,6 +121,8 @@ module.exports = {
       }
       field = "orders" 
      } else {
+      var url = req.body.meals[0].url
+      console.log('Url ' + req.body.meals[0].url);
       //then we have a meal (vendor)
       console.log("I'm a vendor meal")
       var username = req.body.username;
@@ -150,7 +150,8 @@ module.exports = {
           title: title,
           price: price,
           description: description,
-          ingredients: ingredients
+          ingredients: ingredients,
+          url: url
         };
       
         //push the meal object into the respective array

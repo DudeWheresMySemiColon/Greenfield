@@ -8,7 +8,6 @@ angular.module('foodly.meals', [])
 	$scope.order = {orders: []};
 	$scope.count = Counter;
 
-
 	$scope.getMeals = function() {
 		Meals.getMeals()
 			.then(function(data) {
@@ -21,6 +20,7 @@ angular.module('foodly.meals', [])
 	$scope.getMeals(); // must be called for initial page load
 
 	$scope.addMeal = function() {
+		$scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
 		Meals.addMeal({meals: [$scope.meal], username: Auth.getUsername()})
 			.then(function() {
 				console.log($scope.meal.description, 'sent to server.');
