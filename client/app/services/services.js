@@ -1,7 +1,7 @@
 angular.module('foodly.services', [])
 
 .factory('Auth', function($http, $location, $window) {
-
+	var loginorout = "Sign in";
 	var signup = function(user) {
 		return $http({
 			method: 'POST',
@@ -26,15 +26,29 @@ angular.module('foodly.services', [])
 
 	var signout = function() {
 		$window.localStorage.removeItem('com.semicolon');
+		$window.localStorage.removeItem('com.semicolon.name');
+		$window.localStorage.removeItem('com.semicolon.date')
     	$location.path('/signin');
 	};
 
 	var isAuth = function() {
-		return !!$window.localStorage.getItem('com.semicolon');
+		if(!window.localStorage.getItem('com.semicolon')){
+			return false;
+		}
+		loginorout = "Logout"
+		if(new Date() - Date.parse($window.localStorage.getItem('com.semicolon.date'))>1800000){
+			$window.localStorage.removeItem('com.semicolon');
+			$window.localStorage.removeItem('com.semicolon.name');
+			$window.localStorage.removeItem('com.semicolon.date');
+		}else{
+			$window.localStorage.setItem('com.semicolon.date', new Date());			
+		}
+		return true;
 	};
 
 	var getUsername = function() {
-		return $window.localStorage.getItem('com.semicolon.name');
+		var username = $window.localStorage.getItem('com.semicolon.name') || "guest";
+		return username;
 	};
 
 	return {
@@ -42,7 +56,8 @@ angular.module('foodly.services', [])
 		signin: signin,
 		signout: signout,
 		isAuth: isAuth,
-		getUsername: getUsername
+		getUsername: getUsername,
+		loginorout: loginorout
 	};
 
 })
@@ -117,3 +132,12 @@ angular.module('foodly.services', [])
       };
      return count;
 })
+.factory('Counter',function($window){
+	var number =  $window.localStorage.getItem('order') || 0;
+	if(typeof number !== "number"){
+		number = JSON.parse(number).orders.length;
+	}
+
+     return  {number: number}
+})
+

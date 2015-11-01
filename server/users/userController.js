@@ -104,10 +104,9 @@ module.exports = {
   addMeal: function (req,res,next){
     var update;
     if (req.body.hasOwnProperty('orders')) { 
-      //then we have an order (customer)
       var meal = [];
+      var username = req.body.username;
       for(var i =0;i<req.body.orders.length;i++){
-        var username = req.body.orders[i].username,
         title = req.body.orders[i].title,
         price = req.body.orders[0].price,
         description = req.body.orders[i].description, 

@@ -1,8 +1,8 @@
 angular.module('foodly.order', [])
 
-.controller('OrderController', function($scope, $location,Order,Counter) {
+.controller('OrderController', function($scope, $window,$location,Order,Counter,Auth) {
 
-	$scope.orders = Order.getMealOrder();
+	$scope.orders = JSON.parse($window.localStorage.getItem('order'));
 	console.log($scope.orders)
 	$scope.checkOrder = function(){
 		if($scope.orders.orders.length === 0){
@@ -10,9 +10,11 @@ angular.module('foodly.order', [])
 		}
 	};
 	$scope.submitOrder = function() {
-		Order.submitOrder($scope.orders)
+		var orders= $scope.orders;
+		orders.username = Auth.getUsername();
+		Order.submitOrder(orders)
 		.then(function(){
-			Order.cartOrder({orders: []});
+			$window.localStorage.setItem('order',JSON.stringify({orders: []}))
 			Counter.number = 0;
 			$('#myModal').modal('toggle')
 			$location.path("/");
@@ -26,6 +28,17 @@ angular.module('foodly.order', [])
 	    	}
 	    }
     return total;
-}	
+	}
+	$scope.RemoveItem = function(array,index){
+		var order = JSON.parse($window.localStorage.getItem("order"));
+		console.log(order);
+		array.splice(index,1);
+		order.orders.splice(index,1);
+		$window.localStorage.setItem("order",JSON.stringify(order));
+		if (order.orders.length === 0){
+			$location.path('/')
+		}
+		Counter.number--
+	}	
 	$scope.checkOrder();
 })

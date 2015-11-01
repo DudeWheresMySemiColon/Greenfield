@@ -3,16 +3,22 @@ angular.module('foodly.auth', [])
 .controller('AuthController', function($scope, $window, $location, Auth) {
 
 	$scope.user = {}; //this is attached to ng-model in the view
+	$scope.failedAttempt = false;
+	$scope.failedLogin = false;
+	$scope.Loginorout = Auth;
 
 	$scope.signup = function() {
 		Auth.signup($scope.user)
 			.then(function(token) {
 				$window.localStorage.setItem('com.semicolon', token);
 				$window.localStorage.setItem('com.semicolon.name', $scope.user.username);
-        		$location.path('/');
+				$window.localStorage.setItem('com.semicolon.date', new Date());
+        		$location.path('/order');
 			})
 			.catch(function(err) {
+				$scope.failedAttempt = true;
 				console.log(err);
+
 			});
 	};
 
@@ -21,15 +27,23 @@ angular.module('foodly.auth', [])
 			.then(function(token) {
 				$window.localStorage.setItem('com.semicolon', token);
 				$window.localStorage.setItem('com.semicolon.name', $scope.user.username);
-        		$location.path('/');
+				$window.localStorage.setItem('com.semicolon.date', new Date());
+				Auth.loginorout = "Logout"				
+        		$location.path('/order');
 			})
 			.catch(function(err) {
+				$scope.failedLogin = true;
 				console.log(err);
+
 			});
 	};	
 
 	$scope.signout = function() {
-		Auth.signout();
+		if(Auth.loginorout === "Logout"){
+			Auth.signout();
+		}else{
+			location.path("/signin");
+		}
 	};
 
 	$scope.getUsername = function() {

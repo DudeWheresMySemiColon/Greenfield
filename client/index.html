@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Foodly</title>
+    <link rel="shortcut icon" href='http://jadedalloul.com/wp-content/uploads/2014/06/Thumbnail_Foodly.jpg'/>
+
     <link rel="stylesheet" href="styles/styles.css" />
     <!-- jQuery (for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -49,7 +51,7 @@
                             <a href='javascript:void(0)'>Welcome, {{ getUsername() }}</a>
                         </li>
                         <li>
-                        <a href='javascript:void(0)' ng-click='signout()'>Logout</a>
+                        <a href='javascript:void(0)' ng-click='signout()'>{{Loginorout.loginorout}}</a>
 
                         </li>
                       </ul>
