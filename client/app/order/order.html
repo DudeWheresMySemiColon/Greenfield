@@ -320,7 +320,7 @@
                     </thead>
                     <tbody>
                       <tr ng-repeat="order in orders.orders">
-                        <td>         <img ng-src="{{order.url}}" id="order_thumbnail" alt="image">
+                        <td>         <img ng-src="{{order.url || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}" id="order_thumbnail" alt="image">
                         </td>
                         <td>{{order.title}}</td>
                         <td>{{order.price | currency}}</td>
