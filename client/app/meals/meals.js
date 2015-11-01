@@ -1,6 +1,6 @@
 angular.module('foodly.meals', [])
 
-.controller('MealController', function($scope, $location, Meals, Order, Auth, Counter) {
+.controller('MealController', function($scope, $location, $window,Meals, Order, Auth, Counter) {
 
 
 	$scope.data = []; //meals available for purchase
@@ -8,6 +8,9 @@ angular.module('foodly.meals', [])
 	$scope.order = {orders: []};
 	$scope.count = Counter;
 
+	var order = $window.localStorage.getItem('order') || JSON.stringify({orders: []})
+	$window.localStorage.setItem('order', order);
+	$scope.count =  Counter;
 	$scope.getMeals = function() {
 		Meals.getMeals()
 			.then(function(data) {
@@ -18,6 +21,7 @@ angular.module('foodly.meals', [])
 			});
 	};
 	$scope.getMeals(); // must be called for initial page load
+
 
 	$scope.addMeal = function() {
 		$scope.meal.url = angular.element( document.querySelector( '#preview' ) )[0].currentSrc
@@ -30,6 +34,7 @@ angular.module('foodly.meals', [])
 				console.log(err);
 			});
 	};
+
 	$scope.checkOut = function(){
 		if(Counter.number === 0){
 			alert("Please order something before checking out")
@@ -44,15 +49,19 @@ angular.module('foodly.meals', [])
 	//be retrieved from ng-model
 	$scope.orderMeal = function(meal) {
 		if(!Auth.isAuth()){
-			console.log("hello")
 			$location.path('/signin')
 			return;
 		}
-
 		meal.meals.username = Auth.getUsername();
-		$scope.order.orders.push(meal.meals)
-		Order.cartOrder($scope.order);
-		Counter.number = Counter.number +1;
+		var order = JSON.parse($window.localStorage.getItem("order"));
+		order.orders.push(meal.meals);
+		$window.localStorage.setItem('order',JSON.stringify(order));
+		var count = $window.localStorage.getItem('count');
+		$window.localStorage.setItem('count',++count);
+		Counter.number++;
+		console.log("Hello", Counter.number);
+
+
 
 	};
 

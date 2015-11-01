@@ -315,6 +315,7 @@
                         <th colspan=2>title</th>
                         <th>price</th>
                         <th>description</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
@@ -324,11 +325,13 @@
                         <td>{{order.title}}</td>
                         <td>{{order.price | currency}}</td>
                         <td>{{order.description}}</td>
+                        <td><button class="btn btn-primary"  type="button" ng-click="RemoveItem(orders.orders,$index)">remove item</button ></td>
                       </tr>
                       <tfoot>
                         <td></td>
                         <td><strong>Total:</strong></td>
                         <td><strong>{{getTotal() | currency}}</strong></td>
+                        <td></td>
                         <td></td>
                     </tbody>
                   </table>

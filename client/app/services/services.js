@@ -131,3 +131,12 @@ angular.module('foodly.services', [])
       };
      return count;
 })
+.factory('Counter',function($window){
+	var number =  $window.localStorage.getItem('order') || 0;
+	if(typeof number !== "number"){
+		number = JSON.parse(number).orders.length;
+	}
+
+     return  {number: number}
+})
+
