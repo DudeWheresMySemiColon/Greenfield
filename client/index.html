@@ -41,11 +41,6 @@
               </form>            
             <div id="navbar" class="collapse navbar-collapse" >
                 <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
-                    <li class='nav navbar-nav' ng-controller='MealController'>
-                        <a href="#/signin">Sign in 
-                        </a>
-
-                        </li>
                         <li class='nav navbar-nav' ng-controller='MealController'>
                             <a ng-click="checkOut()">Checkout 
                            <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}   
@@ -56,7 +51,7 @@
                             <a href='javascript:void(0)'>Welcome, {{ getUsername() }}</a>
                         </li>
                         <li>
-                        <a href='javascript:void(0)' ng-click='signout()'>Logout</a>
+                        <a href='javascript:void(0)' ng-click='signout()'>{{Loginorout.loginorout}}</a>
 
                         </li>
                       </ul>

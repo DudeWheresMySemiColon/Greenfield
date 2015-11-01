@@ -51,6 +51,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
        $rootScope.SearchBar = false;     
     }
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+      Auth.loginorout = "Sign in";
       $location.path('/signin');
     }
   });

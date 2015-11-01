@@ -5,6 +5,8 @@ angular.module('foodly.auth', [])
 	$scope.user = {}; //this is attached to ng-model in the view
 	$scope.failedAttempt = false;
 	$scope.failedLogin = false;
+	$scope.Loginorout = Auth;
+
 	$scope.signup = function() {
 		Auth.signup($scope.user)
 			.then(function(token) {
@@ -25,8 +27,8 @@ angular.module('foodly.auth', [])
 			.then(function(token) {
 				$window.localStorage.setItem('com.semicolon', token);
 				$window.localStorage.setItem('com.semicolon.name', $scope.user.username);
-
-				$window.localStorage.setItem('com.semicolon.date', new Date());				
+				$window.localStorage.setItem('com.semicolon.date', new Date());
+				Auth.loginorout = "Logout"				
         		$location.path('/order');
 			})
 			.catch(function(err) {
@@ -37,7 +39,11 @@ angular.module('foodly.auth', [])
 	};	
 
 	$scope.signout = function() {
-		Auth.signout();
+		if(Auth.loginorout === "Logout"){
+			Auth.signout();
+		}else{
+			location.path("/signin");
+		}
 	};
 
 	$scope.getUsername = function() {
