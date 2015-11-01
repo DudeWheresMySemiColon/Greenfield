@@ -320,7 +320,7 @@
                     </thead>
                     <tbody>
                       <tr ng-repeat="order in orders.orders">
-                        <td><img src="http://lorempixel.com/40/40/food?afK5dD" class="img-thumbnail" alt="Item description" title="Some shop item">
+                        <td>         <img ng-src="{{order.url}}" id="order_thumbnail" alt="image">
                         </td>
                         <td>{{order.title}}</td>
                         <td>{{order.price | currency}}</td>

@@ -50,10 +50,10 @@ angular.module('foodly.meals', [])
 	$scope.orderMeal = function(meal) {
 		meal.meals.username = Auth.getUsername();
 		var order = JSON.parse($window.localStorage.getItem("order"));
+		console.log(meal);
 		order.orders.push(meal.meals);
 		$window.localStorage.setItem('order',JSON.stringify(order));
 		Counter.number++;
-		console.log("Hello", Counter.number);
 
 
 

@@ -3,6 +3,7 @@ angular.module('foodly.order', [])
 .controller('OrderController', function($scope, $window,$location,Order,Counter,Auth) {
 
 	$scope.orders = JSON.parse($window.localStorage.getItem('order'));
+	console.log($scope.orders)
 	$scope.checkOrder = function(){
 		if($scope.orders.orders.length === 0){
 			$location.path("/");
