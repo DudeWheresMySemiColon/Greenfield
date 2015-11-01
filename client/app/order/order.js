@@ -1,6 +1,6 @@
 angular.module('foodly.order', [])
 
-.controller('OrderController', function($scope, $window,$location,Order,Counter) {
+.controller('OrderController', function($scope, $window,$location,Order,Counter,Auth) {
 
 	$scope.orders = JSON.parse($window.localStorage.getItem('order'));
 	$scope.checkOrder = function(){
@@ -9,7 +9,9 @@ angular.module('foodly.order', [])
 		}
 	};
 	$scope.submitOrder = function() {
-		Order.submitOrder($scope.orders)
+		var orders= $scope.orders;
+		orders.username = Auth.getUsername();
+		Order.submitOrder(orders)
 		.then(function(){
 			$window.localStorage.setItem('order',JSON.stringify({orders: []}))
 			Counter.number = 0;

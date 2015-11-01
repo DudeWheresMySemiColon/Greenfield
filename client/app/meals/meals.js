@@ -48,16 +48,10 @@ angular.module('foodly.meals', [])
 	//ng-click will activate this. order will
 	//be retrieved from ng-model
 	$scope.orderMeal = function(meal) {
-		if(!Auth.isAuth()){
-			$location.path('/signin')
-			return;
-		}
 		meal.meals.username = Auth.getUsername();
 		var order = JSON.parse($window.localStorage.getItem("order"));
 		order.orders.push(meal.meals);
 		$window.localStorage.setItem('order',JSON.stringify(order));
-		var count = $window.localStorage.getItem('count');
-		$window.localStorage.setItem('count',++count);
 		Counter.number++;
 		console.log("Hello", Counter.number);
 
