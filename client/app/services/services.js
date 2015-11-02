@@ -43,7 +43,7 @@ angular.module('foodly.services', [])
 			return false;
 		}else{
 			$window.localStorage.setItem('com.semicolon.date', new Date());
-			return true;			
+			return true;
 		}
 	};
 
@@ -114,39 +114,18 @@ angular.module('foodly.services', [])
 	  }
 	};
 
-	// $(document).ready(function() {
-	//     var from, to, subject, text;
-	//     $("#send_email").click(function() {
-	//         to = $("#to").val();
-	//         subject = $("#subject").val();
-	//         text = $("#content").val();
-	//         $("#message").text("Sending E-mail to vendor...Please wait");
-	//         $.get("http://0.0.0.0:3000/send", {
-	//             to: to,
-	//             subject: subject,
-	//             text: text
-	//         }, function(data) {
-	//             if (data == "sent") {
-	//                 $("#message").empty().html("Email is been sent at " + to + " . Please check inbox !");
-	//             }
 
-	//         });
-	//     });
-	// });
 
 
 
 	var submitOrder = function(mealToOrder) {
-<<<<<<< HEAD
 		console.log(mealToOrder)
 		$.get("http://localhost:3000/send", emailObject, function(data) {
 	            if (data == "sent") {
 	               console.log(data + "Email is been sent at " + to + " . Please check inbox !");
 	            }
 	        });
-=======
 		console.log("I'm a meal to order", mealToOrder)
->>>>>>> e10fc05f154fb1cbe27df28aee8d09478a4c73c9
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',

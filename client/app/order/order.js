@@ -20,10 +20,7 @@ angular.module('foodly.order', [])
 			$location.path("/");
 			});
 	};
-<<<<<<< HEAD
-})
 
-=======
 	$scope.getTotal = function(){
     	var total = 0;
 	    for(var i = 0; i < $scope.orders.orders.length; i++){
@@ -33,6 +30,7 @@ angular.module('foodly.order', [])
 	    }
     return total;
 	}
+
 	$scope.RemoveItem = function(array,index){
 		var order = JSON.parse($window.localStorage.getItem("order"));
 		console.log(order);
@@ -43,7 +41,8 @@ angular.module('foodly.order', [])
 			$location.path('/')
 		}
 		Counter.number--
-	}	
+	}
 	$scope.checkOrder();
-})
->>>>>>> e10fc05f154fb1cbe27df28aee8d09478a4c73c9
+	})
+
+
