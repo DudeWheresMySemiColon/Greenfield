@@ -318,10 +318,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr id="cart" ng-repeat="order in orders.orders">
+                                <tr ng-repeat="order in orders.orders">
                                     <td> <img ng-src="{{order.url || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}" id="order_thumbnail" alt="image">
                                     </td>
-                                    <td>{{order.title}}</td>
+                                    <td id="title">{{order.title}}</td>
                                     <td>{{order.price | currency}}</td>
                                     <td>{{order.description}}</td>
                                     <td>
@@ -332,6 +332,8 @@
                                     <td></td>
                                     <td><strong>Total:</strong></td>
                                     <td><strong id="total">{{getTotal() | currency}}</strong></td>
+                                    <td id="cartContents" style="display: none">{{getCartContents()}}</strong></td>
+
                                     <td></td>
                                     <td></td>
                             </tbody>
@@ -346,28 +348,22 @@
                 var from, to, subject, text;
                 $("#send_email").click(function() {
                     to = $("#email").val();
-                    // subject = $("#subject").val();
                     subject = "Order placed";
-                    // text = $("#content").val();
-                    text = $("#total")
-                        // $("#message").text("Sending E-mail...Please wait");
                     $.get("http://localhost:3000/send", {
                         to: to,
                         subject: subject,
-                        text: "Order has been placed"
+                        text: "Ordered: " + "\n" + "=======" + "\n" + $("#cartContents").text() + "\n\n" + "Total cost: " + $("#total").text()
                     }, function(data) {
                         if (data == "sent") {
-                            // $("#message").empty().html("Email is been sent at " + to + " . Please check inbox !");
                             console.log("Order confirmation email has been sent")
                         }
-
                     });
                 });
             });
             </script>
+            <!-- End Node.JS Email application -->
             </head>
     </div>
-    <!-- End Node.JS Email application -->
     </form>
 </div>
 </div>

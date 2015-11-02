@@ -31,6 +31,16 @@ angular.module('foodly.order', [])
     return total;
 	}
 
+		$scope.getCartContents = function(){
+	    	var cartContents = "";
+		    for(var i = 0; i < $scope.orders.orders.length; i++){
+		    	if($scope.orders.orders[i].title){
+		        cartContents += ("\n" + $scope.orders.orders[i].title + ": $" + $scope.orders.orders[i].price);
+		    	}
+		    }
+	    return cartContents;
+		}
+
 	$scope.RemoveItem = function(array,index){
 		var order = JSON.parse($window.localStorage.getItem("order"));
 		console.log(order);

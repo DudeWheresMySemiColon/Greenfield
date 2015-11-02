@@ -119,13 +119,7 @@ angular.module('foodly.services', [])
 
 
 	var submitOrder = function(mealToOrder) {
-		console.log(mealToOrder)
-		$.get("http://localhost:3000/send", emailObject, function(data) {
-	            if (data == "sent") {
-	               console.log(data + "Email is been sent at " + to + " . Please check inbox !");
-	            }
-	        });
-		console.log("I'm a meal to order", mealToOrder)
+		console.log("Meal to order: ", mealToOrder)
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',
