@@ -42,18 +42,7 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
       	};
     });
 })
-// .directive('errSrc', function() {
-//   return {
-//     link: function(scope, element, attrs) {
-//       element.bind('error', function() {
-//         if (attrs.src != attrs.errSrc) {
-//           console.log("hello")
-//           attrs.$set('src', attrs.errSrc);
-//         }
-//       });
-//     }
-//   }
-// })
+
 .run(function ($rootScope, $location, Auth) {
   $rootScope.SearchBar = true;
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
@@ -63,8 +52,12 @@ angular.module('foodly', ['foodly.order', 'foodly.services', 'foodly.auth', 'foo
        $rootScope.SearchBar = false;     
     }
     if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
-      Auth.loginorout = "Sign in";
       $location.path('/signin');
+    }
+    if(Auth.isAuth()){
+      Auth.loginorout="Logout"
+    }else{
+       Auth.loginorout = "Sign in";     
     }
   });
 });

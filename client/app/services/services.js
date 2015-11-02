@@ -40,10 +40,11 @@ angular.module('foodly.services', [])
 			$window.localStorage.removeItem('com.semicolon');
 			$window.localStorage.removeItem('com.semicolon.name');
 			$window.localStorage.removeItem('com.semicolon.date');
+			return false;
 		}else{
-			$window.localStorage.setItem('com.semicolon.date', new Date());			
+			$window.localStorage.setItem('com.semicolon.date', new Date());
+			return true;			
 		}
-		return true;
 	};
 
 	var getUsername = function() {
