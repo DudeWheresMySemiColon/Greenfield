@@ -3,31 +3,31 @@
         <form class="form-horizontal">
             <fieldset required>
                 <!-- Address form -->
-                <h2>Add Meal [TODO]</h2>
+                <h2>Add Meal</h2>
                 <!-- address-line1 input-->
 
                 <div class="control-group">
                     <label class="control-label">Meal Title</label>
                     <div class="controls">
-                        <input id="address-line1" name="address-line1" type="text" placeholder="Brief meal description" class="input-xlarge" required ng-model='meal.title'>
+                        <input id="address-line1" name="address-line1" type="text" placeholder="title" class="input-xlarge" required ng-model='meal.title'>
                         <p class="help-block">
                         </p>
                     </div>
                     <label class="control-label">Meal Description</label>
                     <div class="controls">
-                        <input id="address-line1" name="address-line1" type="text" placeholder="Brief meal description" class="input-xlarge" required ng-model='meal.description'>
+                        <input id="address-line1" name="address-line1" type="text" placeholder="description" class="input-xlarge" required ng-model='meal.description'>
                         <p class="help-block">
                         </p>
                     </div>
                     <label class="control-label">Meal Price</label>
                     <div class="controls">
-                        <input id="address-line1" name="address-line1" type="text" placeholder="Brief meal description" class="input-xlarge" required ng-model='meal.price'>
+                        <input id="address-line1" name="address-line1" type="text" placeholder="price" class="input-xlarge" required ng-model='meal.price'>
                         <p class="help-block">
                         </p>
                     </div>
                     <label class="control-label">Meal Ingredients</label>
                     <div class="controls">
-                        <input id="address-line1" name="address-line1" type="text" placeholder="Brief meal description" class="input-xlarge" required ng-model='meal.ingredients'>
+                        <input id="address-line1" name="address-line1" type="text" placeholder="ingredients" class="input-xlarge" required ng-model='meal.ingredients'>
                         <p class="help-block">
                         </p>
                     </div>
@@ -325,10 +325,10 @@
                 <!--Submit -->
                 <div class="control-group">
                     <p>
-                        <label class="control-label"> Upload meal photo [TODO]:</label>
+                        <label class="control-label"> Upload meal photo:</label>
                     </p>
                     <div class="controls">
-                        <img style="border:1px solid gray;width:300px;"  id="preview" src="/images/default.png"/>
+                        <img style="border:1px solid gray;width:300px;"  id="preview" src="https://s3-us-west-2.amazonaws.com/mks-greenfield/notfound.png"/>
                         <input id='file_input' type="file" name="img">
                         <input type="hidden" id="avatar_url" name="avatar_url" value="/images/default.png" />
                     </div>
