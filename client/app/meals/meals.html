@@ -1,20 +1,3 @@
-<!doctype html>
-<html lang="en" ng-app="foodly">
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Foodly</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
-</head>
-
-<body>
-
-
 
     <!-- Page Content -->
     <div class="container col-centered">
@@ -56,15 +39,15 @@
                     <!-- begin meal thumbnails -->
                     <div id='container'>
                         <div class="row" ng-controller="MealController">
-                            <div ng-repeat="meal in data">
+                            <div ng-repeat="meal in data | filter:search ">
                                 <div class="col-sm-4 col-lg-4 col-md-4">
                                     <div class="thumbnail">
-                                        <img src="http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg" alt="">
+                                        <img id="meal_images" ng-src="{{meal.meals.url || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}">
                                         <div class="caption">
-                                            <h4 class="pull-right">${{meal.meals.price}}</h4>
+                                            <h4 class="pull-right">{{meal.meals.price | currency}}</h4>
                                             <h4><a href="#">{{meal.meals.title}}</a></h4>
-                                            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Buy</button>
-                                            <p>Brief description of this particular meal. Yum, tasty.</p>
+                                            <button type="submit" class="btn btn-success pull-right" ng-click="orderMeal(meal)">Add to cart</button>
+                                            <p>{{meal.meals.description}}</p>
                                         </div>
                                         <div class="ratings">
                                             <p class="pull-right">15 reviews</p>
@@ -81,9 +64,4 @@
                             </div>
                         </div>
                     </div>
-                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-                    <!-- Bootstrap Core JavaScript -->
-                    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</body>
 
-</html>

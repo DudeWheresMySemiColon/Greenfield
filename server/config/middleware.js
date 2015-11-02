@@ -2,6 +2,8 @@ var morgan      = require('morgan'), // used for logging incoming request
     bodyParser  = require('body-parser'),
     helpers     = require('./helpers.js');
 
+    var aws = require('aws-sdk');
+
    module.exports = function(app, express){
 
 

@@ -1,7 +1,7 @@
 angular.module('foodly.services', [])
 
 .factory('Auth', function($http, $location, $window) {
-
+	var loginorout = "Sign in";
 	var signup = function(user) {
 		return $http({
 			method: 'POST',
@@ -26,15 +26,29 @@ angular.module('foodly.services', [])
 
 	var signout = function() {
 		$window.localStorage.removeItem('com.semicolon');
+		$window.localStorage.removeItem('com.semicolon.name');
+		$window.localStorage.removeItem('com.semicolon.date')
     	$location.path('/signin');
 	};
 
 	var isAuth = function() {
-		return !!$window.localStorage.getItem('com.semicolon');
+		if(!window.localStorage.getItem('com.semicolon')){
+			return false;
+		}
+		loginorout = "Logout"
+		if(new Date() - Date.parse($window.localStorage.getItem('com.semicolon.date'))>1800000){
+			$window.localStorage.removeItem('com.semicolon');
+			$window.localStorage.removeItem('com.semicolon.name');
+			$window.localStorage.removeItem('com.semicolon.date');
+		}else{
+			$window.localStorage.setItem('com.semicolon.date', new Date());			
+		}
+		return true;
 	};
 
 	var getUsername = function() {
-		return $window.localStorage.getItem('com.semicolon.name');
+		var username = $window.localStorage.getItem('com.semicolon.name') || "guest";
+		return username;
 	};
 
 	return {
@@ -42,7 +56,8 @@ angular.module('foodly.services', [])
 		signin: signin,
 		signout: signout,
 		isAuth: isAuth,
-		getUsername: getUsername
+		getUsername: getUsername,
+		loginorout: loginorout
 	};
 
 })
@@ -55,7 +70,6 @@ angular.module('foodly.services', [])
 			url: '/api/users/customer/get/meals'
 		})
 		.then(function(resp) {
-			console.log('response',resp.data)
 			return resp.data;
 		});
 	};
@@ -85,7 +99,7 @@ angular.module('foodly.services', [])
 
 .factory('Order', function($http) {
 	//This data is for experimental purposes only. Needs to be put in via meals html to work
-	var mealToOrder = {orders: [{username: "Michael", title: "Taco", price: 7,description: "Try my taco tacos"}]};
+	var mealToOrder = {orders: []};
 
 	var cartOrder = function(meal) {
 		mealToOrder = meal;
@@ -122,12 +136,16 @@ angular.module('foodly.services', [])
 
 
 	var submitOrder = function(mealToOrder) {
+<<<<<<< HEAD
 		console.log(mealToOrder)
 		$.get("http://localhost:3000/send", emailObject, function(data) {
 	            if (data == "sent") {
 	               console.log(data + "Email is been sent at " + to + " . Please check inbox !");
 	            }
 	        });
+=======
+		console.log("I'm a meal to order", mealToOrder)
+>>>>>>> e10fc05f154fb1cbe27df28aee8d09478a4c73c9
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',
@@ -147,3 +165,19 @@ angular.module('foodly.services', [])
 	};
 
 })
+
+.factory('Counter',function(){
+      var count = {
+        'number': 0
+      };
+     return count;
+})
+.factory('Counter',function($window){
+	var number =  $window.localStorage.getItem('order') || 0;
+	if(typeof number !== "number"){
+		number = JSON.parse(number).orders.length;
+	}
+
+     return  {number: number}
+})
+

@@ -1,6 +1,6 @@
 <div class="container" ng-app="foodly">
   <div class="row">
-     <form class="form-horizontal" ng-submit='this.submitOrder()'>
+     <form class="form-horizontal" ng-submit='submitOrder()'>
             <fieldset required>
                 <!-- Address form -->
 
@@ -312,19 +312,28 @@
                   <table class="table table-striped table-hover">
                     <thead>
                       <tr>
-                        <th colspan=2>title</th>
+                        <th>image</th>
+                        <th>title</th>
                         <th>price</th>
                         <th>description</th>
+                        
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td><img src="http://lorempixel.com/40/40/food?afK5dD" class="img-thumbnail" alt="Item description" title="Some shop item">
+                      <tr ng-repeat="order in orders.orders">
+                        <td>         <img ng-src="{{order.url || 'http://images.realestateview.com.au/pics/406/Food-Hospitality-Elsternwick-VIC-3185-Real-Estate-photo-1-featured-9374406.jpg'}}" id="order_thumbnail" alt="image">
                         </td>
-                        <td>{{order.orders[0].title}}</td>
-                        <td>{{order.orders[0].price | currency}}</td>
-                        <td>{{order.orders[0].description}}</td>
+                        <td>{{order.title}}</td>
+                        <td>{{order.price | currency}}</td>
+                        <td>{{order.description}}</td>
+                        <td><button class="btn btn-primary"  type="button" ng-click="RemoveItem(orders.orders,$index)">remove item</button ></td>
                       </tr>
+                      <tfoot>
+                        <td></td>
+                        <td><strong>Total:</strong></td>
+                        <td><strong>{{getTotal() | currency}}</strong></td>
+                        <td></td>
+                        <td></td>
                     </tbody>
                   </table>
                 </div>

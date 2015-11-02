@@ -19,6 +19,7 @@
   "homepage": "https://github.com/DudeWheresMySemiColon/DudeWheresMySemiColon",
   "dependencies": {
     "angular-route": "^1.4.7",
+    "aws-sdk": "^2.2.12",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
