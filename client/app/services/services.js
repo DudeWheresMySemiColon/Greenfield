@@ -91,13 +91,49 @@ angular.module('foodly.services', [])
 		mealToOrder = meal;
 	};
 
+	var emailObject = function(mealToOrder) {
+	  return {
+	    to: "order.orders[0].email", // vendor email address
+	    subject: "New order: order.orders[0].description",
+	    text: "You have received a new order for  order.orders[0].description +  for a price of + order.orders[0].price + to be delivered to + user.address"
+	  }
+	};
+
+	// $(document).ready(function() {
+	//     var from, to, subject, text;
+	//     $("#send_email").click(function() {
+	//         to = $("#to").val();
+	//         subject = $("#subject").val();
+	//         text = $("#content").val();
+	//         $("#message").text("Sending E-mail to vendor...Please wait");
+	//         $.get("http://0.0.0.0:3000/send", {
+	//             to: to,
+	//             subject: subject,
+	//             text: text
+	//         }, function(data) {
+	//             if (data == "sent") {
+	//                 $("#message").empty().html("Email is been sent at " + to + " . Please check inbox !");
+	//             }
+
+	//         });
+	//     });
+	// });
+
+
+
 	var submitOrder = function(mealToOrder) {
 		console.log(mealToOrder)
+		$.get("http://localhost:3000/send", emailObject, function(data) {
+	            if (data == "sent") {
+	               console.log(data + "Email is been sent at " + to + " . Please check inbox !");
+	            }
+	        });
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',
 			data: mealToOrder
 		});
+
 	};
 
 	var getMealOrder = function() {
