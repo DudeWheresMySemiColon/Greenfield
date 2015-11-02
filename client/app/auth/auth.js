@@ -42,7 +42,7 @@ angular.module('foodly.auth', [])
 		if(Auth.loginorout === "Logout"){
 			Auth.signout();
 		}else{
-			location.path("/signin");
+			$location.path("/signin");
 		}
 	};
 
