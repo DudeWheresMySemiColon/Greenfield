@@ -79,10 +79,10 @@ footer {
 
 .banner {
   width: 80%;
-  max-width: 1000px;
+  max-width: 1250px;
   height: 80px;
-  margin: 40px auto; 
-  position: relative;
+  margin: 40px auto;
+  position: absolute;
 }
 
 .one > div {
@@ -90,7 +90,7 @@ footer {
 }
 
 .main {
-  background: #0fadc0; 
+  background: #0fadc0;
   position: relative;
   display: block;
   width: 90%;
@@ -159,35 +159,35 @@ footer {
   height: 25px !important;
   position: absolute;
   z-index: 2;
-    width: 0; 
-    height: 0; 
+    width: 0;
+    height: 0;
 }
 
 .arrow.top {
   top: 0px;
   border-top: 0px solid transparent;
-    border-bottom: 25px solid transparent;  
-    border-right: 30px solid #1199a9; 
+    border-bottom: 25px solid transparent;
+    border-right: 30px solid #1199a9;
 }
 
 .arrow.bottom {
   top: 25px;
   border-top: 25px solid transparent;
-    border-bottom:0px solid transparent;    
-    border-right: 30px solid #1199a9; 
+    border-bottom:0px solid transparent;
+    border-right: 30px solid #1199a9;
 }
 
 .r .bottom {
   border-top: 25px solid transparent;
-    border-bottom: 0px solid transparent;   
-    border-left: 30px solid #1199a9; 
+    border-bottom: 0px solid transparent;
+    border-left: 30px solid #1199a9;
   border-right: none;
 }
 
 .r .top {
   border-bottom: 25px solid transparent;
-    border-top: 0px solid transparent;  
-    border-left: 30px solid #1199a9; 
+    border-top: 0px solid transparent;
+    border-left: 30px solid #1199a9;
   border-right: none;
 }
 
