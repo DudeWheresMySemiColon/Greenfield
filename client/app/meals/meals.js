@@ -14,7 +14,7 @@ angular.module('foodly.meals', [])
 	$scope.randStars = [];
 	(function() {
 		for(var i = 0; i < 25; i++) {
-			$scope.randReviews[i] = Math.floor(Math.random() * 15);
+			$scope.randReviews[i] = Math.floor(Math.random() * 15) + 1;
 			var max = 5, min = 4;
 			$scope.randStars[i] = Math.floor(Math.random() * (max - min + 1)) + min;
 		}
