@@ -29,22 +29,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src='http://jadedalloul.com/wp-content/uploads/2014/06/Thumbnail_Foodly.jpg' height=80>
+                <a class="navbar-brand" href="#"><img src='http://jadedalloul.com/wp-content/uploads/2014/06/Thumbnail_Foodly.jpg' height=100>
                 </a>
-                <a class="navbar-brand" href="#/meals">Today's Meals</a>           
+                <a class="navbar-brand" href="#/meals">Today's Meals</a>
                         <a class ='navbar-brand' href="#/addmeal">Add Meal</a>
 
             </div>
               <form class="navbar-form navbar-left" role="search">
                 <div class="form-group" ng-show="SearchBar" >
-                   <input type="text" class="form-control search" placeholder="Search"  ng-model="search">    
+                   <input type="text" class="form-control search" placeholder="Search"  ng-model="search">
                 </div>
-              </form>            
+              </form>
             <div id="navbar" class="collapse navbar-collapse" >
                 <ul class="nav navbar-nav navbar-right" ng-controller='AuthController' style='float:right'>
                         <li class='nav navbar-nav' ng-controller='MealController'>
-                            <a ng-click="checkOut()">Checkout 
-                           <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}   
+                            <a ng-click="checkOut()">Checkout
+                           <span class="glyphicon glyphicon-shopping-cart"></span> {{count.number}}
                             </a>
 
                         </li>
@@ -57,28 +57,33 @@
                         </li>
                       </ul>
             </div>
-       
+
         </div>
         </div>
     </nav>
     <!--banner-->
-    <div class="banner one" ng-show="SearchBar">
+    <div class="banner one" ng-show="SearchBar" style="position:absolute;left:155px">
 
       <div class="bk l">
-        <div class="arrow top"></div> 
+        <div class="arrow top"></div>
         <div class="arrow bottom"></div>
       </div>
 
       <div class="skew l"></div>
 
       <div class="main">
-        <div >Welcome  to  foodly  -  Your  marketplace  for  home  cooked  food</div>   
+      <div style="
+          font-family: serif;
+          font-variant: small-caps;
+          position: relative;
+          text-align: center;
+      ">The  marketplace  for  home-cooked  food</div>
       </div>
 
       <div class="skew r"></div>
-      
+
       <div class="bk r">
-        <div class="arrow top"></div> 
+        <div class="arrow top"></div>
         <div class="arrow bottom"></div>
       </div>
 
