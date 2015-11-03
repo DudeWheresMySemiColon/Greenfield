@@ -50,13 +50,13 @@
                                             <p>{{meal.meals.description}}</p>
                                         </div>
                                         <div class="ratings">
-                                            <p class="pull-right">15 reviews</p>
+                                            <p class="pull-right">{{ randReviews[$index] }} review<span ng-show='randReviews[$index] !== 1'>s</span></p>
                                             <p>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
-                                                <span class="glyphicon glyphicon-star"></span>
+                                                <span ng-show='randStars[$index] >= 1' class="glyphicon glyphicon-star"></span>
+                                                <span ng-show='randStars[$index] >= 2' class="glyphicon glyphicon-star"></span>
+                                                <span ng-show='randStars[$index] >= 3' class="glyphicon glyphicon-star"></span>
+                                                <span ng-show='randStars[$index] >= 4' class="glyphicon glyphicon-star"></span>
+                                                <span ng-show='randStars[$index] >= 5' class="glyphicon glyphicon-star"></span>
                                             </p>
                                         </div>
                                     </div>
