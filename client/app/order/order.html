@@ -2,6 +2,14 @@
     <div class="row">
         <form class="form-horizontal" ng-submit='submitOrder()'>
             <fieldset required>
+                <h2>Contact Information</h2>
+                <!-- email input-->
+                <div class="control-group">
+                    <label class="control-label">Email address</label>
+                    <div class="controls">
+                        <input id="email" name="email" type="text" placeholder="name@example.com" class="input-xlarge">
+                    </div>
+                </div>
                 <!-- Address form -->
                 <h2>Address</h2>
                 <!-- address-line1 input-->
@@ -19,13 +27,6 @@
                     <div class="controls">
                         <input id="address-line2" name="address-line2" type="text" placeholder="address line 2" class="input-xlarge">
                         <p class="help-block">Apartment, suite , unit, building, floor, etc.</p>
-                    </div>
-                </div>
-                <!-- email input-->
-                <div class="control-group">
-                    <label class="control-label">Email address</label>
-                    <div class="controls">
-                        <input id="email" name="email" type="text" placeholder="name@example.com" class="input-xlarge">
                     </div>
                 </div>
                 <!-- city input-->
