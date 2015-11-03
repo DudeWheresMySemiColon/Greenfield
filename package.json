@@ -28,6 +28,7 @@
     "mongodb-uri": "^0.9.7",
     "mongoose": "^4.2.2",
     "morgan": "^1.6.1",
+    "nodemailer": "~0.7.1",
     "nodemon": "^1.7.3",
     "q": "^1.4.1"
   },

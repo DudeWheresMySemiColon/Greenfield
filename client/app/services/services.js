@@ -43,7 +43,7 @@ angular.module('foodly.services', [])
 			return false;
 		}else{
 			$window.localStorage.setItem('com.semicolon.date', new Date());
-			return true;			
+			return true;
 		}
 	};
 
@@ -106,13 +106,26 @@ angular.module('foodly.services', [])
 		mealToOrder = meal;
 	};
 
+	var emailObject = function(mealToOrder) {
+	  return {
+	    to: "order.orders[0].email", // vendor email address
+	    subject: "New order: order.orders[0].description",
+	    text: "You have received a new order for  order.orders[0].description +  for a price of + order.orders[0].price + to be delivered to + user.address"
+	  }
+	};
+
+
+
+
+
 	var submitOrder = function(mealToOrder) {
-		console.log("I'm a meal to order", mealToOrder)
+		console.log("Meal to order: ", mealToOrder)
 		return $http({
 			method: 'POST',
 			url: '/api/users/customer/post/orders',
 			data: mealToOrder
 		});
+
 	};
 
 	var getMealOrder = function() {
